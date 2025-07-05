@@ -1,14 +1,14 @@
 %% main.m
 
 % 定义路径
-folderPath = 'D:\master\computer vision\Datasets\Datasets\Dubai';
+folderPath = '..\Datasets\Privat\Chongming Island';
 
 % 预处理
 [images_registered, tforms] = preprocessImages(folderPath);
 
 % 比较两张图
 I1 = images_registered{1};
-I2 = images_registered{end};
+I2 = images_registered{end-1};
 
 % 差分
 [diffImage, BW_clean, changeRatio] = computeDifference(I1, I2);

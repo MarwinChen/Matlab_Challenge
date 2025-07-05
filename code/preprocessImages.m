@@ -61,8 +61,8 @@ for i = 2:numel(images_matched)
     moving = images_matched{i};
 
     % 特征检测
-    ptsFixed = detectSURFFeatures(refImage, 'MetricThreshold', 500);
-    ptsMoving = detectSURFFeatures(moving, 'MetricThreshold', 500);
+    ptsFixed = detectSURFFeatures(refImage, 'MetricThreshold', 300);
+    ptsMoving = detectSURFFeatures(moving, 'MetricThreshold', 300);
 
     % 特征提取
     [featuresFixed, validPtsFixed] = extractFeatures(refImage, ptsFixed);
@@ -70,7 +70,7 @@ for i = 2:numel(images_matched)
 
     % 匹配特征
     indexPairs = matchFeatures(featuresFixed, featuresMoving, ...
-        'MatchThreshold', 10, 'MaxRatio', 0.6);
+        'MatchThreshold', 10, 'MaxRatio', 0.6, 'Unique',true);
 
     matchedFixed = validPtsFixed(indexPairs(:,1));
     matchedMoving = validPtsMoving(indexPairs(:,2));
